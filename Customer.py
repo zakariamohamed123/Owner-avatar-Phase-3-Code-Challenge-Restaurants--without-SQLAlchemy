@@ -1,42 +1,29 @@
-from Review import Review
-
-# Rest of the code
-
-
 class Customer:
-    all_customers = []
+    customers= []
 
-    def __init__(self, given_name, family_name):
-        self.given_name = given_name
-        self.family_name = family_name
-        self.reviews = []
-        Customer.all_customers.append(self)
 
+    def __init__(self, given_name, last_name):
+        self.given_name= given_name
+        self.last_name = last_name
+        Customer.customers.append(self)
+    def given_name(self):
+        return self.given_name
+    def last_name(self):
+        return self.last_name
     def full_name(self):
-        return self.given_name + " " + self.family_name
-
-    def restaurants(self):
-        return list({review.restaurant for review in self.reviews})
-
-    def add_review(self, restaurant, rating):
-        review = Review(self, restaurant, rating)
-        self.reviews.append(review)
-        restaurant.add_review(review)
-
-    def num_reviews(self):
-        return len(self.reviews)
-
+        return (f'{self.given_name}') +  (f'{self.last_name}')
+    def all_names(self):
+        return self.Customer 
+    
     @classmethod
+    def all(cls):
+        return cls.customers
+    def num_reviews(cls, self):
+        return cls.customers()
     def find_by_name(cls, name):
-        for customer in cls.all_customers:
-            if customer.full_name() == name:
-                return customer
-        return None
-
-    @classmethod
+        return cls.name
     def find_all_by_given_name(cls, name):
-        customers = []
-        for customer in cls.all_customers:
-            if customer.given_name == name:
-                customers.append(customer)
-        return customers
+        return cls._name
+
+customer_one = Customer('George', 'Washington')
+print(customer_one.full_name())
